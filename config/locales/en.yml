@@ -11,10 +11,80 @@ en:
   layouts:
     application:
       welcome: "welcome to weblog"
+    header:
       home: "Home"
-      help: "Help"
-      about: "About"
-      contact: "Contact"
-      login: "Log in"
-      weblog: "weblog"
+      users: "User"
+      profile: "Profile"
+      logout: "Log out"
+      weblog: "WEBLOG"
       logo: "Logo"
+    footer:
+      copyright: "Copyright &copy; Your Website 2017"
+  devise:
+    confirmations:
+      new:
+        caption: "Resend confirmation instructions"
+        btn_submit: "Resend confirmation instructions"
+    mailer:
+      confirmation_instructions:
+        welcome: "welcome"
+        content: "You can confirm your account email through the link below:"
+        confirm: "Confirm my account"
+      email_changed:
+        hello: "Hello"
+        content: "We're contacting you to notify you that your email is being changed to"
+      password_changed:
+        hello: "Hello"
+        content: "We're contacting you to notify you that your password has been changed."
+      reset_password_instructions:
+        hello: "Hello"
+        content: "Someone has requested a link to change your password.
+          You can do this through the link below."
+        change_password: "Change my password"
+        content2: "If you didn't request this, please ignore this email."
+        content3: "Your password won't change until you access the link above and create a new one."
+      unlock_instructions:
+        hello: "Hello"
+        content: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+        content2: "Click the link below to unlock your account:"
+        unlock_account: "Unlock my account "
+    passwords:
+      edit:
+        caption: "Change your password"
+        new_password: "New password"
+        confirm_password: "Confirm new password"
+        btn_submit: "Change my password"
+      new:
+        caption: "Forgot your password?"
+        btn_submit: "Send me reset password instructions"
+    registrations:
+      edit:
+        edit: "Edit"
+        content: "Currently waiting confirmation for:"
+        char_mini: "characters minimum"
+        leave_blank: "(leave blank if you don't want to change it)"
+        current_password: "(we need your current password to confirm your changes)"
+        btn_submit: "Update"
+        cancel: "Cancel my account"
+        btn_cancel: "Cancel my account"
+        confirm: "Are you sure?"
+        back: "Back"
+      new:
+        caption: "Sign up"
+        char_mini: "characters minimum"
+        btn_submit: "Sign up"
+    sessions:
+      new:
+        caption: "Log in"
+        btn_submit: "Log in"
+      link:
+        login: "Log in"
+        signup: "Sign up"
+        fogot: "Forgot your password?"
+        confirmations: "Didn't receive confirmation instructions?"
+        unlock: "Didn't receive unlock instructions?"
+        sign_with: "Sign in with"
+    unlocks:
+      new:
+        caption: "Resend unlock instructions"
+        btn_submit: "Resend unlock instructions"
