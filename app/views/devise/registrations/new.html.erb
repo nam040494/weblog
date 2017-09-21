@@ -2,6 +2,14 @@
   html: {class: "col-md-offset-2"} do |f| %>
   <%= devise_error_messages! %>
   <h2><%= t ".caption" %></h2>
+
+  <div class="form-group">
+    <%= f.label :avatar, class: "col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <%= f.file_field :avatar %>
+    </div>
+  </div>
+
   <div class="input-group col-md-8">
     <span class="input-group-addon"><i class="glyphicon glyphicon-user">
       <%= f.label :name %></i></span>
@@ -22,7 +30,7 @@
     <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
   </div>
 
-  <div class="input-group col-md-8">s
+  <div class="input-group col-md-8">
     <span class="input-group-addon">
       <i class="glyphicon glyphicon-lock"><%= f.label :password_confirmation %></i>
     </span>
