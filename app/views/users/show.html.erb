@@ -1,0 +1,10 @@
+<% provide :title, @user.name %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <%= image_tag(current_user.avatar.url(:thumb)) %>
+      <p><h1>Email: <strong><%= @user.email %></strong></h1></p>
+    </section>
+  </aside>
+</div>
