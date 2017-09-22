@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable
+    :recoverable, :rememberable, :trackable, :validatable,
+    :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -10,6 +11,8 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: Relationship.name,
     foreign_key: :followed_id, dependent: :destroy
   has_many :follower, through: :passive_relationships, source: :follower
+  has_attached_file :avatar, styles: {medium: "300x300>", thumb: "100x100#"},
+    default_url: Settings.users.avatar
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :name, presence: true,
@@ -19,4 +22,19 @@ class User < ApplicationRecord
     format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   validates :password, presence: true,
     length: {minimum: Settings.validates.password.minimum}, allow_nil: true
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
+  class << self
+    def from_omniauth access_token
+      data = access_token.info
+      user = User.where(email: data["email"]).first
+
+      unless user
+        password = Devise.friendly_token[0,20]
+        user = User.create(name: data["name"], email: data["email"],
+          password: password, password_confirmation: password, avatar: Settings.users.avatar)
+      end
+      user
+    end
+  end
 end
