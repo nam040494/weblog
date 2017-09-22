@@ -8,9 +8,9 @@ class User < ApplicationRecord
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: :follower_id, dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
-  has_many :passive_relationships, class_name: Relationship.name,
-    foreign_key: :followed_id, dependent: :destroy
-  has_many :follower, through: :passive_relationships, source: :follower
+  has_many :passive_relationships, class_name: "Relationship",
+    foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :follower
   has_attached_file :avatar, styles: {medium: "300x300>", thumb: "100x100#"},
     default_url: Settings.users.avatar
 
@@ -31,10 +31,28 @@ class User < ApplicationRecord
 
       unless user
         password = Devise.friendly_token[0,20]
-        user = User.create(name: data["name"], email: data["email"],
-          password: password, password_confirmation: password, avatar: Settings.users.avatar)
+        user = User.new name: data["name"], email: data["email"],
+          password: password, password_confirmation: password
+        user.avatar_from_url data[:image]
+        user.save
       end
       user
     end
+  end
+
+  def follow other
+    following << other
+  end
+
+  def unfollow other
+    following.delete other
+  end
+
+  def following? other
+    following.include? other
+  end
+
+  def avatar_from_url url
+    self.avatar = open url
   end
 end

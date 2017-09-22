@@ -3,6 +3,14 @@ Rails.application.routes.draw do
   get "static_pages/:page", to: "static_pages#show"
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  resources :users, only: %i(index show)
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
   resources :posts
+  resources :relationships
+
+  mount Ckeditor::Engine => "/ckeditor"
 end
