@@ -5,15 +5,27 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails", "~> 5.1.3"
-gem "mysql2", ">= 0.3.18", "< 0.5"
-gem "puma", "~> 3.7"
-gem "sass-rails", "~> 5.0"
-gem "uglifier", ">= 1.3.0"
-gem "coffee-rails", "~> 4.2"
-gem "jbuilder", "~> 2.5"
 gem "bcrypt", "~> 3.1", ">= 3.1.11"
+gem "bootstrap-sass"
+gem "coffee-rails", "~> 4.2"
+gem "config", "~> 1.4"
+gem "devise"
+gem "figaro", "~> 1.1", ">= 1.1.1"
+gem "font-awesome-rails"
+gem "jbuilder", "~> 2.5"
+gem "jquery-rails"
+gem "mysql2", ">= 0.3.18", "< 0.5"
+gem "omniauth"
+gem "omniauth-facebook"
+gem "omniauth-google-oauth2"
+gem "paperclip", "~> 4.1"
+gem "popper_js", "~> 1.12", ">= 1.12.3"
+gem "puma", "~> 3.7"
+gem "rails", "~> 5.1.3"
+gem "sass-rails", "~> 5.0"
 gem "shoulda", "~> 3.5"
+gem "turbolinks"
+gem "uglifier", ">= 1.3.0"
 
 group :development, :test do
   gem "autoprefixer-rails"
@@ -36,7 +48,7 @@ group :development, :test do
   gem "rubocop", "~> 0.35.0", require: false
   gem "rubocop-checkstyle_formatter", require: false
   gem "scss_lint_reporter_checkstyle", require: false
-  gem "scss_lint"
+  gem "scss_lint", require: false
   gem "selenium-webdriver"
 end
 

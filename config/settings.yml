@@ -5,3 +5,10 @@ validates:
     maximum: 255
   password:
     minimum: 6
+users:
+  size: 5
+  avatar:
+    "https://b2b989d215c701ad63d7-288404e13f895703cf2798bf6ae95228.ssl.cf1.rackcdn.com/451351568112-350.png"
+post:
+  content:
+    maximum: 140
