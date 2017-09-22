@@ -1,0 +1,9 @@
+<ul class="users">
+  <% @users.each do |user| %>
+    <li>
+      <%= image_tag(user.avatar.url(:thumb)) %>
+      <strong><%= user.name %></strong>
+      <%= link_to "view profile", user_path(user) %>
+    </li>
+  <% end %>
+</ul>
