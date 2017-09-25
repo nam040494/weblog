@@ -1,0 +1,14 @@
+<div class="posts">
+    <% @posts.each do |post| %>
+      <span class="user">
+        <%= image_tag post.user.avatar.url :thumb %>
+        <%= link_to post.user.name, post.user %>
+      </span>
+      <span class="content">
+        <h2><%= post.title %></h2>
+        <h6><%= post.created_at.strftime(Settings.post.date) %></h6>
+        <%= raw(post.content).truncate(Settings.post.length) %>
+        <%= link_to t ".readmore", post_path(post) %>
+      </span>
+    <% end %>
+</div>
